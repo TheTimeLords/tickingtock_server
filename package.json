@@ -1,0 +1,17 @@
+{
+  "name": "tickingtock",
+  "version": "0.0.1",
+  "description": "ticking tock adventure",
+  "author": "Jonathan Dahan <jonathan@jedahan.com>",
+  "dependencies": {
+    "mongolian": "~0.1.18",
+    "async": "~0.2.10",
+    "restify": "2.6.0",
+    "toobusy": "~0.2.4",
+    "swagger-doc": "~0.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/thetimelords/tickingtock_server.git"
+  }
+}
