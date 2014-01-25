@@ -1,3 +1,4 @@
+util = require 'util'
 restify = require 'restify'
 swagger = require 'swagger-doc'
 toobusy = require 'toobusy'
@@ -26,19 +27,18 @@ server.pre restify.pre.userAgentConnection()
 server.use _check_if_busy
 server.use restify.queryParser()
 server.use restify.acceptParser server.acceptable # respond correctly to accept headers
-server.use restify.bodyParser uploadDir: 'public/uploads'
+server.use restify.bodyParser uploadDir: 'public/uploads', keepExtensions: true
 server.use restify.fullResponse() # set CORS, eTag, other common headers
 
 newImage = (req, res, next) ->
-  uuid = req.query.uuid
-  prompt = req.query.prompt
-  console.log req.files
+  console.log util.inspect req
+  uuid = req.params.uuid
+  prompt = req.params.prompt
   path = req.files.image.path.split('/')[1...].join('/')
-  #ext = req.files.image.name
-  #ext = ext.split('.')
-  ext = '.jpg'
-  image = req.headers.host + '/' + path + ext
+  image = req.headers.host + '/' + path
   date = new Date()
+
+  console.log {uuid, prompt, image, date}
 
   images.insert {uuid, prompt, image, date}, (err, doc) ->
     console.log err if err
@@ -57,8 +57,8 @@ getImage = (req, res, next) ->
   API
 ###
 swagger.configure server
-server.put  "/image", newImage
-server.get  "/image", getImage
+server.post "/image", newImage
+server.get "/image", getImage
 
 ###
   Documentation
@@ -69,11 +69,11 @@ docs.get "/image", "Get images",
   parameters: [
     { name: 'uuid', description: 'uuid for who', required: true, dataType: 'string', paramType: 'query' }
   ]
-docs.put "/image", "Upload a new image",
+docs.post "/image", "Upload a new image",
   nickname: "newImage"
   parameters: [
-    { name: 'uuid', description: 'uuid', required: true, dataType: 'string', paramType: 'query' }
-    { name: 'prompt', description: 'what prompted this image?', required: true, dataType: 'string', paramType: 'query'}
+    { name: 'uuid', description: 'uuid', required: true, dataType: 'string', paramType: 'body' }
+    { name: 'prompt', description: 'what prompted this image?', required: true, dataType: 'string', paramType: 'body'}
     { name: 'image', description: 'the photo', required: true, dataType: 'file', paramType: 'body' }
   ]
 

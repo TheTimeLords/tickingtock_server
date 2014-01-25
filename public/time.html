@@ -1,0 +1,16 @@
+<input id="image" type="file" accept="image/*;capture=camera">
+
+<script>
+var image = document.getElementById("image");
+image.onchange = function (event) {
+    var formData = new FormData();
+
+    formData.append("uuid", "as");
+    formData.append("prompt", "test");
+    formData.append("image", event.target.files[0]);
+
+    var request = new XMLHttpRequest();
+    request.open("POST", "http://192.168.10.193:5100/image");
+    request.send(formData);
+};
+</script>
