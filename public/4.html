@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<!-- saved from url=(0039)/1.html -->
-<html lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 	<meta charset="utf-8">
 	<title>Time Travellers of the Ticking Tock</title>
@@ -13,16 +14,13 @@
 	<link rel="stylesheet" href="/stylesheets/skeleton.css">
 	<link rel="stylesheet" href="/stylesheets/layout.css">
 
-	<!--[if lt IE 9]>
-		<script src="images/images/images/http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
 	<link rel="shortcut icon" href="/images/favicon.ico">
 	<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
 
 	<script src="js/store.min.js"></script>
+	<script src="js/guid.js"></script>
 </head>
 
 <style>
@@ -40,9 +38,7 @@ hr {color:sienna;}
 		</div>
 		
 		<div class="sixteen columns" id="topbanner">	
-			<a href="3.html">< 3</a>
-			&nbsp;&nbsp;
-			<a href="5.html">5 ></a>
+			
 			<h3>You Found the Time Machine!</h3>
 			<img src="images/4.jpg" id="tm">
 			<p>To get it working again, we will need POWER, TIME, and IMAGINATION. Can you capture a photo of some wings in this room to power our time machine?</p>
@@ -52,14 +48,23 @@ hr {color:sienna;}
 				<input id="image" type="file" accept="image/*;capture=camera">
 			</label>
 			</div>
+			<a href="3.html">< 3</a>
+			&nbsp;&nbsp;
+			<a href="5.html">5 ></a>
 		</div>
 
 		<script>
 		var image = document.getElementById("image");
 		image.onchange = function (event) {
 			var formData = new FormData();
+			var uuid = store.get('uuid');
+			if(uuid===undefined){
+        		uuid = guid();
+        		console.log(uuid);
+        		store.set('uuid', uuid);
+    		}
 
-			formData.append("uuid", store.get('uuid'));
+			formData.append("uuid", uuid);
 			formData.append("prompt", "4");
 			formData.append("image", event.target.files[0]);
 

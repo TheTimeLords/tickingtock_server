@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 	<meta charset="utf-8">
 	<title>Time Travellers of the Ticking Tock</title>
@@ -12,16 +14,13 @@
 	<link rel="stylesheet" href="/stylesheets/skeleton.css">
 	<link rel="stylesheet" href="/stylesheets/layout.css">
 
-	<!--[if lt IE 9]>
-		<script src="images/images/images/http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
 	<link rel="shortcut icon" href="/images/favicon.ico">
 	<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
 
 	<script src="js/store.min.js"></script>
+	<script src="js/guid.js"></script>
 </head>
 
 <body>
@@ -33,23 +32,31 @@
 		</div>
 		
 		<div class="sixteen columns" id="topbanner">
-			<a href="7.html">< 7</a>
-			&nbsp;&nbsp;
-			<a href="9.html">9 ></a>
+			
 			<h3>Ah, welcome my friend.</h3>
-			<p>We have been expecting you. I care for everyone here, including dear Isabella & Albert. To survive the trip through time, the travelers will need a good vessel to hold and protect them on their journey. Please help by capturing a photo of a protective cockpit for time travel!</p>
+			<p>I have been expecting you. My name is Taweret. I care for everyone here, including dear Isabella & Albert. To survive the trip through time, the travelers will need a good vessel to hold and protect them on their journey. Please help by capturing a photo of a protective cockpit for time travel!</p>
 			<div>
 			<label class="camerabutton">
 				<input id="image" type="file" accept="image/*;capture=camera">
 			</label>
 			</div>
+			<a href="7.html">< 7</a>
+			&nbsp;&nbsp;
+			<a href="9.html">9 ></a>
 		</div>
 
 		<script>
 		var image = document.getElementById("image");
 		image.onchange = function (event) {
 			var formData = new FormData();
-			formData.append("uuid", store.get('uuid'));
+			var uuid = store.get('uuid');
+			if(uuid===undefined){
+        		uuid = guid();
+        		console.log(uuid);
+        		store.set('uuid', uuid);
+    		}
+
+			formData.append("uuid", uuid);
 			formData.append("prompt", "8");
 			formData.append("image", event.target.files[0]);
 

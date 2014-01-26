@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><!--<![endif]-->
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -16,10 +16,6 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/store.min.js"></script>
 
-    <!--[if lt IE 9]>
-        <script src="images/images/images/http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
     <link rel="shortcut icon" href="images/favicon.ico">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
@@ -34,6 +30,10 @@ hr {color:sienna;}
 </style>
 <script type="text/javascript">
     var uuid = store.get('uuid');
+    if(uuid===undefined){
+        uuid = guid();
+        store.set('uuid', guid());
+    }
     console.log("http://192.168.10.124:5100/image?uuid="+uuid);
     $.getJSON("http://192.168.10.124:5100/image?uuid="+uuid,
         function(data){
@@ -61,7 +61,6 @@ hr {color:sienna;}
     );
 </script>
 <body>
-
     <div class="container">
         <div class="sixteen columns" id="topbanner">
             <h2>The Time Traveller's Ticking Tock'</h2>
@@ -73,6 +72,6 @@ hr {color:sienna;}
             <br>
             <h3>Your Journal!</h3>
         </div>
-    </div><!-- container -->
+    </div>
 </body>
 </html>

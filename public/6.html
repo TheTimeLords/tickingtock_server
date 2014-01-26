@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<!-- saved from url=(0039)/1.html -->
-<html lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 	<meta charset="utf-8">
 	<title>Time Travellers of the Ticking Tock</title>
@@ -13,16 +14,13 @@
 	<link rel="stylesheet" href="/stylesheets/skeleton.css">
 	<link rel="stylesheet" href="/stylesheets/layout.css">
 
-	<!--[if lt IE 9]>
-		<script src="images/images/images/http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
 	<link rel="shortcut icon" href="/images/favicon.ico">
 	<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
 
 	<script src="js/store.min.js"></script>
+	<script src="js/guid.js"></script>
 </head>
 
 <style>
@@ -36,21 +34,22 @@ hr {color:sienna;}
 	<div class="container">
 		<div class="sixteen columns" id="topbanner">
 			<h2 class='left'>The Time Traveller's Ticking Tock</h2>
-			<a href="journal.html"><img class="journal" src="images/journal.jpg" /></a><h2>The Time Traveller's Ticking Tock</h2>
+			<a href="journal.html"><img class="journal" src="images/journal.jpg" /></a>
 			<hr />
 		</div>
 		
 		<div class="sixteen columns" id="topbanner">	
-			<a href="5.html">< 5</a>
-			&nbsp;&nbsp;
-			<a href="7.html">7 ></a>
+
 			<h3>Isabella & Albert need help?</h3>
-			
-			<p><img src="images/5.jpg" id="tm" style="width: 30%; float: left">Of course I can help! You will need a portable chronograph (A CLOCK) to help them keep track of what time it is! Can you capture a photo of your favorite clock for them?</p>
+			<p><img src="images/5.jpg" id="tm" style="width: 30%"></p>
+			<p>Of course I can help! You will need a portable chronograph (A CLOCK) to help them keep track of what time it is! Can you capture a photo of your favorite clock for them?</p>
 			<div>
 			<label class="camerabutton">
 				<input id="image" type="file" accept="image/*;capture=camera">
 			</label>
+			<a href="5.html">< 5</a>
+			&nbsp;&nbsp;
+			<a href="7.html">7 ></a>
 			</div>
 		</div>
 
@@ -58,8 +57,14 @@ hr {color:sienna;}
 		var image = document.getElementById("image");
 		image.onchange = function (event) {
 			var formData = new FormData();
+			var uuid = store.get('uuid');
+			if(uuid===undefined){
+        		uuid = guid();
+        		console.log(uuid);
+        		store.set('uuid', uuid);
+    		}
 
-			formData.append("uuid", store.get('uuid'));
+			formData.append("uuid", uuid);
 			formData.append("prompt", "6");
 			formData.append("image", event.target.files[0]);
 
