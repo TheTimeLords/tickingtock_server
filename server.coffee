@@ -1,9 +1,6 @@
 util = require 'util'
 restify = require 'restify'
-swagger = require 'swagger-doc'
 toobusy = require 'toobusy'
-fs = require 'fs'
-async = require 'async'
 
 # MongoDB setup
 Mongolian = require 'mongolian'
@@ -50,10 +47,8 @@ getImage = (req, res, next) ->
 ###
   API
 ###
-swagger.configure server
 server.post "/image", newImage
 server.get "/image", getImage
-
 server.get '.*', restify.serveStatic directory: './public', default: 'index.html'
 
 server.listen process.env.PORT or 8081, ->
