@@ -8,16 +8,12 @@ mongolian = new Mongolian
 ObjectId = Mongolian.ObjectId
 ObjectId.prototype.toJSON = ObjectId.prototype.toString
 db = mongolian.db 'tickingtock'
-
-# Collections
 images = db.collection 'images'
 
 _check_if_busy = (req, res, next) ->
   if toobusy()
     res.send 503, "I'm busy right now, sorry."
   else next()
-
-_exists = (item, cb) -> cb item?
 
 server = restify.createServer()
 server.pre restify.pre.userAgentConnection()
