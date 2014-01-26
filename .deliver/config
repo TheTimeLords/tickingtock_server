@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+APP="timelords"
+HOSTS="72.2.114.118"
+USER="root"
+PORT="5100"
+STRATEGY="nodejs"
+SUPERVISOR="smf"
+

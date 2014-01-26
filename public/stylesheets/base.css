@@ -314,6 +314,9 @@ body {
 	float: left;
 }
 
+#topbanner {
+	padding-bottom: -50px;
+}
 /*
 div.container  {
 	background-image:url('../images/background.jpg');
