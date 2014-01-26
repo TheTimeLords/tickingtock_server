@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0039)http://192.168.10.137:8000/1.html -->
+<!-- saved from url=(0039)/1.html -->
 <html lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 	<!-- Basic Page Needs
@@ -15,9 +15,9 @@
 
 	<!-- CSS
   ================================================== -->
-	<link rel="stylesheet" href="http://192.168.10.137:8000/stylesheets/base.css">
-	<link rel="stylesheet" href="http://192.168.10.137:8000/stylesheets/skeleton.css">
-	<link rel="stylesheet" href="http://192.168.10.137:8000/stylesheets/layout.css">
+	<link rel="stylesheet" href="/stylesheets/base.css">
+	<link rel="stylesheet" href="/stylesheets/skeleton.css">
+	<link rel="stylesheet" href="/stylesheets/layout.css">
 
 	<!--[if lt IE 9]>
 		<script src="images/images/images/http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -25,10 +25,10 @@
 
 	<!-- Favicons
 	================================================== -->
-	<link rel="shortcut icon" href="http://192.168.10.137:8000/images/favicon.ico">
-	<link rel="apple-touch-icon" href="http://192.168.10.137:8000/images/apple-touch-icon.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="http://192.168.10.137:8000/images/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="http://192.168.10.137:8000/images/apple-touch-icon-114x114.png">
+	<link rel="shortcut icon" href="/images/favicon.ico">
+	<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
 
 </head>
 
@@ -62,10 +62,10 @@ hr {color:sienna;}
 			<a href="5.html">5 ></a>
 <!-- /NAV -->			
 <!-- PAGE HEADER -->		    
-			<h3>Oh, those are fantastic wings! Well done, we are so impressed!</h3>
+			<h3>You Found the Time Machine!</h3>
 
 <!-- CONTENT -->			
-			<p>Let's use our arms as wings to fly to the other side of the sculpture court into the treasury to talk with someone who also has a love of winged things. They will know what to do next.</p>
+			<p>To get it working again, we will need POWER, TIME, and IMAGINATION. Can you capture a photo of some wings in this room to power our time machine?</p>
 			<a href="5.html"><img src="images/4.jpg" id="tm" alt="We saved kittens. Have you?" title="We saved kittens. Have you?"></a>
 <!-- /CONTENT -->
 <!-- ================================================== -->
@@ -84,13 +84,13 @@ hr {color:sienna;}
 			var formData = new FormData();
 
 			formData.append("uuid", "as");
-			formData.append("prompt", "8");
+			formData.append("prompt", "4");
 			formData.append("image", event.target.files[0]);
 
 			var request = new XMLHttpRequest();
 			request.onreadystatechange = function() {
 				if(request.readyState===4){
-					setTimeout(window.location='9.html', 10);
+					setTimeout(window.location='5.html', 10);
 				}
 			}
 			request.open("POST", "http://192.168.10.137:5100/image");

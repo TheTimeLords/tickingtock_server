@@ -303,6 +303,16 @@ body {
 	background-image:url('../images/texture.png');
 }
 
+.journal {
+	float: right;
+	width: 80px;
+	height: 80px;
+}
+
+.left {
+	float: left;
+}
+
 /*
 div.container  {
 	background-image:url('../images/background.jpg');
