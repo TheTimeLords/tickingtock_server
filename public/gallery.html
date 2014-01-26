@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en"><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta charset="utf-8">
+    <title>Time Travellers of the Ticking Tock</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="stylesheet" href="stylesheets/base.css">
+    <link rel="stylesheet" href="stylesheets/skeleton.css">
+    <link rel="stylesheet" href="stylesheets/layout.css">
+    <script src="js/jquery.min.js"></script>
+
+    <!--[if lt IE 9]>
+        <script src="images/images/images/http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+</head>
+
+<style>
+hr {color:sienna;}
+#tm{
+    width:100%
+}
+</style>
+<script type="text/javascript">
+    $.getJSON('image?uuid=as',
+        function(data){
+            var items = [];
+
+            $.each( data, function( key, val ) {
+                console.log(val);
+                items.push( "<li><img id='" + key + "' src='" + val.image + "'/>" );
+            });
+         
+          $( "<ul/>", {
+            "class": "my-new-list",
+            html: items.join( "" )
+          }).appendTo( "body" );
+        }
+    );
+</script>
+<body>
+
+    <div class="container">
+        <div class="sixteen columns" id="topbanner">
+            <h2>The Time Traveller's Ticking Tock'</h2>
+            <hr />
+        </div>
+        
+        <div class="sixteen columns" id="topbanner">
+            <h3>Your Journal!</h3>
+            <p>How will you steer? Will the ride be fast or slow?</p>
+        </div>
+    </div><!-- container -->
+</body>
+</html>

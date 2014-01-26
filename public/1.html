@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)/1.html -->
+<html lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>Time Travellers of the Ticking Tock</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="/stylesheets/base.css">
+	<link rel="stylesheet" href="/stylesheets/skeleton.css">
+	<link rel="stylesheet" href="/stylesheets/layout.css">
+
+	<!--[if lt IE 9]>
+		<script src="images/http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="/images/favicon.ico">
+	<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+</head>
+
+
+<body>
+
+
+
+	<!-- Primary Page Layout
+	================================================== -->
+
+	<!-- Delete everything in this .container and get started on your own site! -->
+
+<!-- ================================================== -->
+<!-- ================================================== -->	
+	<div class="container">
+		<div class="sixteen columns" id="topbanner">
+			<h2>The Time Traveller's Ticking Tock'</h2>
+			<hr />
+		</div>
+		
+		<div class="sixteen columns" id="topbanner">
+<!-- NAV -->		
+			<a href="2.html">2 ></a>
+<!-- /NAV -->			
+<!-- PAGE HEADER -->		    
+			<h3>We need your help but we can't find you! Which entrance did you come in?</h3>
+
+<!-- CONTENT -->			
+			<p>a - (directions from Center Street) b - (directions from Charles Street) *if you need help, find a security guard or someone wearing this shirt When you come through the glass doors, walk up the first set of marble steps and take a left.  Walk through the "17th-Century Dutch Cabinet Rooms" door. From the center of the room, walk through the first doorway on your right to enter: THE CHAMBER OF WONDERS</p>
+			  <a href="1a.html"><img src="images/centreStreet.JPG" id="tm" alt="Centre Street Entrance" style="width:48%"></a><a href="1b.html"><img src="images/charlesEntrance.jpg" alt="Charles Street Entrance" style="margin-left: 3%; width:48%"></a>
+<!-- /CONTENT -->
+<!-- ================================================== -->
+<!-- ================================================== -->
+		</div>
+		
+		<input id="image" type="file" accept="image/*;capture=camera">
+		<script>
+		var image = document.getElementById("image");
+		image.onchange = function (event) {
+			var formData = new FormData();
+
+			formData.append("uuid", "as");
+			formData.append("prompt", "test");
+			formData.append("image", event.target.files[0]);
+
+			var request = new XMLHttpRequest();
+			request.open("POST", "http://192.168.10.193:5100/image");
+			request.send(formData);
+		};
+		</script>
+	</div><!-- container -->
+<!-- End Document
+================================================== -->
+</body>
+</html>

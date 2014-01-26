@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)http://192.168.10.137:8000/1.html -->
+<html lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>Time Travellers of the Ticking Tock</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="http://192.168.10.137:8000/stylesheets/base.css">
+	<link rel="stylesheet" href="http://192.168.10.137:8000/stylesheets/skeleton.css">
+	<link rel="stylesheet" href="http://192.168.10.137:8000/stylesheets/layout.css">
+
+	<!--[if lt IE 9]>
+		<script src="images/images/images/http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="http://192.168.10.137:8000/images/favicon.ico">
+	<link rel="apple-touch-icon" href="http://192.168.10.137:8000/images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="http://192.168.10.137:8000/images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="http://192.168.10.137:8000/images/apple-touch-icon-114x114.png">
+
+</head>
+
+<style>
+hr {color:sienna;}
+#tm{
+	width:100%
+}
+</style>
+<body>
+
+
+
+	<!-- Primary Page Layout
+	================================================== -->
+
+	<!-- Delete everything in this .container and get started on your own site! -->
+
+<!-- ================================================== -->
+<!-- ================================================== -->	
+	<div class="container">
+		<div class="sixteen columns" id="topbanner">
+			<h2>The Time Traveller's Ticking Tock'</h2>
+			<hr />
+		</div>
+		
+		<div class="sixteen columns" id="topbanner">
+<!-- NAV -->		
+			<a href="3.html">< 3</a>
+			&nbsp;&nbsp;
+			<a href="5.html">5 ></a>
+<!-- /NAV -->			
+<!-- PAGE HEADER -->		    
+			<h3>Oh, those are fantastic wings! Well done, we are so impressed!</h3>
+
+<!-- CONTENT -->			
+			<p>Let's use our arms as wings to fly to the other side of the sculpture court into the treasury to talk with someone who also has a love of winged things. They will know what to do next.</p>
+			<a href="5.html"><img src="images/4.jpg" id="tm" alt="We saved kittens. Have you?" title="We saved kittens. Have you?"></a>
+<!-- /CONTENT -->
+<!-- ================================================== -->
+<!-- ================================================== -->
+
+			<div>
+			<label class="camerabutton">
+				<input id="image" type="file" accept="image/*;capture=camera">
+			</label>
+			</div>
+		</div>
+
+		<script>
+		var image = document.getElementById("image");
+		image.onchange = function (event) {
+			var formData = new FormData();
+
+			formData.append("uuid", "as");
+			formData.append("prompt", "8");
+			formData.append("image", event.target.files[0]);
+
+			var request = new XMLHttpRequest();
+			request.onreadystatechange = function() {
+				if(request.readyState===4){
+					setTimeout(window.location='9.html', 10);
+				}
+			}
+			request.open("POST", "http://192.168.10.137:5100/image");
+			request.send(formData);
+		};
+		</script>
+	</div>
+</body>
+</html>

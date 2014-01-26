@@ -31,22 +31,15 @@ server.use restify.bodyParser uploadDir: 'public/uploads', keepExtensions: true
 server.use restify.fullResponse() # set CORS, eTag, other common headers
 
 newImage = (req, res, next) ->
-  console.log util.inspect req
   uuid = req.params.uuid
   prompt = req.params.prompt
   path = req.files.image.path.split('/')[1...].join('/')
-  image = req.headers.host + '/' + path
   date = new Date()
 
-  console.log {uuid, prompt, image, date}
-
-  images.insert {uuid, prompt, image, date}, (err, doc) ->
-    console.log err if err
-    console.log doc
+  images.insert {uuid, prompt, path, date}, (err, doc) ->
     res.send doc
 
 getImage = (req, res, next) ->
-  console.log 'GET'
   uuid = req.query.uuid
   prompt = req.query.prompt
   async.filter {uuid, prompt}, _exists, (filtered) ->

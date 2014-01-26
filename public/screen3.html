@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)http://192.168.10.137:8000/screen1.html -->
+<html lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>Time Travellers of the Ticking Tock</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="http://192.168.10.137:8000/stylesheets/base.css">
+	<link rel="stylesheet" href="http://192.168.10.137:8000/stylesheets/skeleton.css">
+	<link rel="stylesheet" href="http://192.168.10.137:8000/stylesheets/layout.css">
+
+	<!--[if lt IE 9]>
+		<script src="images/images/images/images/http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="http://192.168.10.137:8000/images/favicon.ico">
+	<link rel="apple-touch-icon" href="http://192.168.10.137:8000/images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="http://192.168.10.137:8000/images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="http://192.168.10.137:8000/images/apple-touch-icon-114x114.png">
+
+</head>
+
+<style>
+hr {color:sienna;}
+#tm{
+	width:100%
+}
+</style>
+<body>
+
+
+
+	<!-- Primary Page Layout
+	================================================== -->
+
+	<!-- Delete everything in this .container and get started on your own site! -->
+
+	<div class="container">
+		<div class="sixteen columns" id="topbanner">
+			<h1 class="remove-bottom" style="margin-top: 40px">Ticking Tock</h1>
+
+			<hr />
+		</div>
+		<div class="sixteen columns" id="topbanner">
+			<a href="2.html"><< Screen 2</a>
+			<a href="4.html">Screen 4 >></a>
+			<br />
+			<h3>You found the time machine!</h3>
+			<a href="4.html"><img src="images/3.jpg" id="tm" alt="We save kittens. Do you?" 
+			  title="We save kittens. Do you?"></a>
+			<p style="margin-top: 40px">To get it working again, we will need <strong>POWER</strong>, <strong>TIME</strong>, and <strong>IMAGINATION</strong>. Can you capture a photo of some wings in this room to power our time machine?</p>
+			<input id="image" type="file" accept="image/*;capture=camera">
+			<script>
+			var image = document.getElementById("image");
+			image.onchange = function (event) {
+				var formData = new FormData();
+
+				formData.append("uuid", "as");
+				formData.append("prompt", "test");
+				formData.append("image", event.target.files[0]);
+
+				var request = new XMLHttpRequest();
+				request.open("POST", "http://192.168.10.193:5100/image");
+				request.send(formData);
+			};
+			</script>
+		</div>
+		
+
+	</div><!-- container -->
+
+
+<!-- End Document
+================================================== -->
+</body>
+</html>
