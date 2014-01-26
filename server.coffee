@@ -44,7 +44,7 @@ newImage = (req, res, next) ->
 getImage = (req, res, next) ->
   uuid = req.params.uuid
   console.log uuid
-  images.find({uuid}).sort({date:1}).toArray (err, body) ->
+  images.find({uuid}).sort({date:-1}).toArray (err, body) ->
     res.send body
 
 ###
@@ -53,23 +53,6 @@ getImage = (req, res, next) ->
 swagger.configure server
 server.post "/image", newImage
 server.get "/image", getImage
-
-###
-  Documentation
-###
-docs = swagger.createResource '/doc'
-docs.get "/image", "Get images",
-  nickname: "getImage"
-  parameters: [
-    { name: 'uuid', description: 'uuid for who', required: true, dataType: 'string', paramType: 'query' }
-  ]
-docs.post "/image", "Upload a new image",
-  nickname: "newImage"
-  parameters: [
-    { name: 'uuid', description: 'uuid', required: true, dataType: 'string', paramType: 'body' }
-    { name: 'prompt', description: 'what prompted this image?', required: true, dataType: 'string', paramType: 'body'}
-    { name: 'image', description: 'the photo', required: true, dataType: 'file', paramType: 'body' }
-  ]
 
 server.get '.*', restify.serveStatic directory: './public', default: 'index.html'
 
