@@ -26,6 +26,39 @@ hr {color:sienna;}
 	width:100%
 }
 </style>
+
+<script type="text/javascript">
+    var uuid = store.get('uuid');
+    if(uuid===undefined){
+        uuid = guid();
+        store.set('uuid', guid());
+    }
+    $.getJSON("http://72.2.114.118:5100/image?uuid="+uuid,
+        function(data){
+            var items = [];
+
+            $.each( data, function( key, val ) {
+                console.log(val);
+                if(val.prompt==='4') {
+                    items.push( "<li> Butterfly wings to power the time machine...")
+                }
+                if(val.prompt==='6') {
+                    items.push( "<li> My portable chronograph to help keep time...")
+                }
+                if(val.prompt==='8') {
+                    items.push( "<li> The vessel to shield us from spare time debris...")
+                }
+                items.push( "<li><img id='" + key + "' src='" + val.path + "'/>" );
+            });
+         
+          $( "<ul/>", {
+            "class": "my-new-list",
+            html: items.join( "" )
+          }).appendTo( ".journal" );
+        }
+    );
+</script>
+
 <body>
 
 	<div class="container">
@@ -34,12 +67,10 @@ hr {color:sienna;}
 		<div class="sixteen columns" id="topbanner">	
 			
 			<h3>You did it! You collected these amazing items:</h3>
-			<p>[gallery here]</p>
+			<p class='journal'></p>
 			<p>Show how to control the time machine!</p>
 			<p>Pretend to steer. Will the ride be fast or slow? When will you travel to, and who would you bring along?</p>
 			<a href="8.html">< 8</a>
-			&nbsp;&nbsp;
-			<a href="10.html">10 ></a>
 		</div>
 	</div>
 </body>
