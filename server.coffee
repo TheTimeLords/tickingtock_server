@@ -43,6 +43,7 @@ newImage = (req, res, next) ->
 
 getImage = (req, res, next) ->
   uuid = req.params.uuid
+  console.log uuid
   images.find({uuid}).sort({date:1}).toArray (err, body) ->
     res.send body
 
