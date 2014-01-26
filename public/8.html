@@ -20,13 +20,14 @@
 	<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
-</head>
 
+	<script src="js/store.min.js"></script>
+</head>
 
 <body>
 	<div class="container">
 		<div class="sixteen columns" id="topbanner">
-			<h2 class='left'>The Time Traveller's Ticking Tock'</h2>
+			<h2 class='left'>The Time Traveller's Ticking Tock</h2>
 			<a href="journal.html"><img class="journal" src="images/journal.jpg" /></a>
 			<hr />
 		</div>
@@ -36,7 +37,7 @@
 			&nbsp;&nbsp;
 			<a href="9.html">9 ></a>
 			<h3>Ah, welcome my friend.</h3>
-			<p>We have been expecting you. I care for everyone here, including dear Isabella & Albert. To survive the trip through time, the travelers will need a good vessel to hold and protect tem on their journey. Please help by capturing a photo of a protective cockpit for time travel!</p>
+			<p>We have been expecting you. I care for everyone here, including dear Isabella & Albert. To survive the trip through time, the travelers will need a good vessel to hold and protect them on their journey. Please help by capturing a photo of a protective cockpit for time travel!</p>
 			<div>
 			<label class="camerabutton">
 				<input id="image" type="file" accept="image/*;capture=camera">
@@ -48,8 +49,7 @@
 		var image = document.getElementById("image");
 		image.onchange = function (event) {
 			var formData = new FormData();
-
-			formData.append("uuid", "as");
+			formData.append("uuid", store.get('uuid'));
 			formData.append("prompt", "8");
 			formData.append("image", event.target.files[0]);
 
@@ -59,7 +59,7 @@
 					setTimeout(window.location='9.html', 10);
 				}
 			}
-			request.open("POST", "http://192.168.10.137:5100/image");
+			request.open("POST", "http://192.168.10.124:5100/image");
 			request.send(formData);
 		};
 		</script>

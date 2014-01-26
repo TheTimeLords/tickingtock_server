@@ -36,15 +36,15 @@ newImage = (req, res, next) ->
   path = req.files.image.path.split('/')[1...].join('/')
   date = new Date()
 
+  console.log {uuid, prompt, path, date}
+
   images.insert {uuid, prompt, path, date}, (err, doc) ->
     res.send doc
 
 getImage = (req, res, next) ->
-  uuid = req.query.uuid
-  prompt = req.query.prompt
-  async.filter {uuid, prompt}, _exists, (filtered) ->
-    images.find(filtered).sort({date:1}).toArray (err, body) ->
-      res.send body
+  uuid = req.params.uuid
+  images.find({uuid}).sort({date:1}).toArray (err, body) ->
+    res.send body
 
 ###
   API

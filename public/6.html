@@ -2,19 +2,13 @@
 <!-- saved from url=(0039)/1.html -->
 <html lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-	<!-- Basic Page Needs
-  ================================================== -->
 	<meta charset="utf-8">
 	<title>Time Travellers of the Ticking Tock</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<!-- Mobile Specific Metas
-  ================================================== -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<!-- CSS
-  ================================================== -->
 	<link rel="stylesheet" href="/stylesheets/base.css">
 	<link rel="stylesheet" href="/stylesheets/skeleton.css">
 	<link rel="stylesheet" href="/stylesheets/layout.css">
@@ -23,13 +17,12 @@
 		<script src="images/images/images/http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
-	<!-- Favicons
-	================================================== -->
 	<link rel="shortcut icon" href="/images/favicon.ico">
 	<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
 
+	<script src="js/store.min.js"></script>
 </head>
 
 <style>
@@ -40,35 +33,20 @@ hr {color:sienna;}
 </style>
 <body>
 
-
-
-	<!-- Primary Page Layout
-	================================================== -->
-
-	<!-- Delete everything in this .container and get started on your own site! -->
-
-<!-- ================================================== -->
-<!-- ================================================== -->	
 	<div class="container">
 		<div class="sixteen columns" id="topbanner">
-			<h2>The Time Traveller's Ticking Tock'</h2>
+			<h2 class='left'>The Time Traveller's Ticking Tock</h2>
+			<a href="journal.html"><img class="journal" src="images/journal.jpg" /></a><h2>The Time Traveller's Ticking Tock</h2>
 			<hr />
 		</div>
 		
-		<div class="sixteen columns" id="topbanner">
-<!-- NAV -->		
+		<div class="sixteen columns" id="topbanner">	
 			<a href="5.html">< 5</a>
 			&nbsp;&nbsp;
 			<a href="7.html">7 ></a>
-<!-- /NAV -->			
-<!-- PAGE HEADER -->		    
 			<h3>Isabella & Albert need help?</h3>
-
-<!-- CONTENT -->			
-			<p> Of course I can help! You will need a portable chronograph (A CLOCK) to help them keep track of what time it is! Can you capture a photo of your favorite clock for them?</p>
-<!-- /CONTENT -->
-<!-- ================================================== -->
-<!-- ================================================== -->
+			
+			<p><img src="images/5.jpg" id="tm" style="width: 30%; float: left">Of course I can help! You will need a portable chronograph (A CLOCK) to help them keep track of what time it is! Can you capture a photo of your favorite clock for them?</p>
 			<div>
 			<label class="camerabutton">
 				<input id="image" type="file" accept="image/*;capture=camera">
@@ -81,7 +59,7 @@ hr {color:sienna;}
 		image.onchange = function (event) {
 			var formData = new FormData();
 
-			formData.append("uuid", "as");
+			formData.append("uuid", store.get('uuid'));
 			formData.append("prompt", "6");
 			formData.append("image", event.target.files[0]);
 
@@ -91,7 +69,7 @@ hr {color:sienna;}
 					setTimeout(window.location='7.html', 10);
 				}
 			}
-			request.open("POST", "http://192.168.10.137:5100/image");
+			request.open("POST", "http://192.168.10.124:5100/image");
 			request.send(formData);
 		};
 		</script>
